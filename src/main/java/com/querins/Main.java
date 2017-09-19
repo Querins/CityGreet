@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 public class Main {
 
     private static Logger logger = LoggerFactory.getLogger(Main.class);
-    private static String cityName;
     private static final String DEFAULT_TIMEZONE = "Etc/GMT+0";
     private static final ResourceBundle resourceBundle = ResourceBundle.getBundle("MessageBundle");
 
@@ -20,6 +19,7 @@ public class Main {
                 throw new IllegalArgumentException("No arguments provided");
             case 1: {
                 // Only city is provided
+                logger.info("One parameter");
                 String city = args[0];
                 ZoneId targetTimeZone = findZoneByCity(city);
                 System.out.println(getMessage(targetTimeZone, city));
@@ -27,12 +27,13 @@ public class Main {
             break;
             case 2: {
                 // Both city and timezone arguments are provided
+                logger.info("Two parameters");
                 String city = args[0];
                 String timeZone = args[1];
                 if(validateTimeZone(timeZone)) {
-                    getMessage(ZoneId.of(timeZone), city);
+                    System.out.println(getMessage(ZoneId.of(timeZone), city));
                 } else {
-                    throw new IllegalArgumentException("Wrong timezone provided");
+                    throw new IllegalArgumentException("Wrong timezone provided: " + timeZone);
                 }
             }
             break;
