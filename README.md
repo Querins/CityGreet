@@ -1,0 +1,1 @@
+https://travis-ci.org/Querins/CityGreet.svg?branch=master
