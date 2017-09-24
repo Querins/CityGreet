@@ -51,8 +51,10 @@ public class Main {
     public static boolean validateTimeZone(String zone) {
         try {
             ZoneId.of(zone);
+            logger.info("Time zone successfully validated: " + zone);
             return true;
         } catch (Exception e) {
+            logger.info("Invalid timezone: " + zone);
             return false;
         }
     }
