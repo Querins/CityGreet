@@ -38,7 +38,7 @@ public class Main {
             }
             break;
             default:
-                System.out.println("You must provide 1 or 2 command line arguments");
+                System.out.println("You have provided " + args.length + " arguments." + "You must provide 1 or 2 command line arguments");
         }
 
     }
@@ -79,7 +79,7 @@ public class Main {
             if ( hour >= 9 && hour < 19  ) {
                 state = "day";
             } else {
-                if( hour >= 19 && hour < 23 ) {
+                if( hour >= 19 && hour <= 23 ) {
                     state = "evening";
                 } else {
                     if( hour > 23 || hour < 6) {
@@ -89,7 +89,7 @@ public class Main {
             }
         }
 
-        return resourceBundle.getString("message." + state) + ", " + city;
+        return resourceBundle.getString("message." + state) + ", " + city + "!";
 
     }
 
